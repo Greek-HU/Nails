@@ -1,10 +1,20 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Képfeltöltő űrlap</title>
-    
+    <style>
+        .gal_show{
+            opacity: 1;
+        }
+        .gallery__thumb>img{
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
 <div class="navbar">
@@ -22,6 +32,7 @@
     <div class="box">
         <div class="text box_color">
             <h1>Képfeltöltő űrlap</h1>
+            <button class="reFresh">Frissít</button>
             <form method="post" enctype="multipart/form-data">
                 <input type="file" id="kep" name="kep" accept="image/*">
             <label for="cim">Cím:</label>
@@ -41,14 +52,16 @@
                                 imagecopyresampled($destImage, $sourceImage, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $originalWidth, $originalHeight);
                                 
                                 $fileName = $_POST['cim'] . '.jpg';
-                                imagejpeg($destImage, './private/img/'.$fileName);
+                                $filePath = './img/'.$fileName;
+
+                                /*imagejpeg($destImage, '/private/img/'.$fileName);*/
                                 imagedestroy($sourceImage);
                                 imagedestroy($destImage);
-                                copy($_FILES['kep']['tmp_name'], '../img/'.$fileName);
+                                copy($_FILES['kep']['tmp_name'],'./img/'.$fileName );
                                 
                                 $newImageObj = array(
-                        "place" => $fileName,
-                        "title" => $_POST['cim']
+                                    "place" => '../img/'.$fileName,
+                                    "title" => $_POST['cim'],
                     );
                     
                     // Módosítás: Korábbi adatok betöltése a JSON fájlból
@@ -70,7 +83,12 @@
                         }
                     }
                 ?>
-            <div class="gallery"></div>
+            <div class="container">
+                <div class="ro">
+                    <div class="gallery col-12 round gal_show"></div>
+                </div>
+                
+            </div>
         </div>
     </div>
         <script src="./js/script.js"></script>

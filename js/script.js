@@ -5,9 +5,7 @@ const $ce = el => document.createElement(el);
 var navbar = document.querySelector('.navbar');
 const box = $s('.box');
 
-navbar.lastElementChild.style.float = 'right';
-
-var picTPL = p => `
+var picTPL = p => ` 
 
 <a href="${p.place}" target="_blank" class="gallery__link">
 <figure class="gallery__thumb">
@@ -20,7 +18,7 @@ var picTPL = p => `
 `;
 $sAll('.navbar').forEach(nBTN => {
     nBTN.querySelector('.fst_pg').onclick = function () {
-        $s('.wlc_txt').style.display = 'block';
+        $s('.wlc_txt').style.display = 'grid';
         $s('.services_box').style.display = 'none';
         $s('.gallery').style.display = 'none';
         $s('.cont').style.display = 'none';
@@ -33,18 +31,6 @@ $sAll('.navbar').forEach(nBTN => {
         
     }
     nBTN.querySelector('.gall_on').onclick = function () {
-        $s('.wlc_txt').style.display = 'none';
-        $s('.services_box').style.display = 'none';
-
-        $s('.gallery').style.display = 'flex';
-        $s('.gallery').classList.add('gal_show');
-
-        setTimeout(function () {
-            $s('.gallery').style.opacity = "1";
-        }, 10);
-        $s('.cont').style.display = 'none';
-    }
-    nBTN.querySelector('.upload').onclick = function () {
         $s('.wlc_txt').style.display = 'none';
         $s('.services_box').style.display = 'none';
 
@@ -84,29 +70,6 @@ function get_picBox() {
     $s('.pic_box').appendChild(pic);
 };
 
-window.addEventListener('DOMContentLoaded', function () {
-    fetch('galleryPic.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var galeriaDiv = $s('.gallery');
-
-            data.forEach(function (pic) {
-                var picHTML = picTPL(pic);
-                var picContainer = document.createElement('div');
-                picContainer.classList.add('gallery__column');
-                picContainer.innerHTML = picHTML;
-
-                galeriaDiv.appendChild(picContainer);
-            });
-            console.log(data);
-
-        })
-        .catch(function (error) {
-            console.log('Hiba a képek betöltése során:', error);
-        });
-})
 function mobil_navbar(){
     var nav_a = $s(".nav_links");
     if(nav_a.style.display === "block"){

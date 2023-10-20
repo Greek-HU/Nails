@@ -1,0 +1,33 @@
+{\rtf1\ansi\ansicpg1250\cocoartf2745
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww21380\viewh14840\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Csilla-nails \'e9szrev\'e9telek\
+\
+PHP\
+	uploader.php f\'e1jl 31-72 sorok k\'f6zti szekci\'f3t sz\'fcntesd meg! Csin\'e1lj helyette egy functions.php f\'e1jlt, ami kiz\'e1r\'f3lag php k\'f3dot tartalmaz, valamint egy uploader_view.php f\'e1jlt, ami pedig csak html-t. Ut\'f3bbi f\'e1jlba a php m\'e1r csak k\'e9sz v\'e1ltoz\'f3kat \'edr ki \'edgy: <?php print($valtozo) ?> vagy \'edgy: <?=$valtozo?>\
+\
+	if(substr($_FILES['kep']['name'], -4)  == '.jpg' || substr($_FILES['kep']['name'], -4)  == 'jpeg')\{\
+		- substr-rel nem szerencs\'e9s f\'e1jlkiterjeszt\'e9st ellen\uc0\u337 rizni, pont ez\'e9rt, mert a kiterjeszt\'e9s nem mindig ugyanolyan hossz\'fa, helyette jobb megold\'e1s lehet az explode f\'fcggv\'e9ny, ami a stringet sz\'e9tv\'e1lasztja egy megadott elv\'e1laszt\'f3 ment\'e9n: explode(\'93.\'94, $_FILES['kep']['name\'92]) az eredm\'e9ny egy t\'f6mb lesz, aminek a 0. param\'e9tere a f\'e1jl neve, az 1. pedig a kiterjeszt\'e9s pont n\'e9lk\'fcl. M\'e1sik j\'f3 megold\'e1s a PATHINFO_EXTENSION a k\'f6vetkez\uc0\u337 k\'e9ppen:  $ext = pathinfo($path, PATHINFO_EXTENSION); \'edgy az $ext v\'e1ltoz\'f3 megkapja a kiterjeszt\'e9st. Harmadik megold\'e1st a mime t\'edpust vizsg\'e1lni, ennek viszont olvass ut\'e1na, mert bonyolultabb, viszont sokkal megb\'edzhat\'f3bb \'e9s biztons\'e1gosabb!\
+	\
+	apr\'f3s\'e1g, de fontos: a 49. sorban $newImageObj n\'e9v megt\'e9veszt\uc0\u337 , mert nem objectet, hanem t\'f6mb\'f6t hozol l\'e9tre\
+\
+	az 55. sorban a $galleryData v\'e1ltoz\'f3 teljesen felesleges, haszn\'e1ld nyugodtan a $newImageObj-et\
+\
+	a 32. sorban lev\uc0\u337  if egy hibakezel\'e9s, erre a c\'e9lra sokkal praktikusabb a try-catch haszn\'e1lata, ezt \'e9rdemes egy kicsit gyakorolni, de mindenk\'e9ppen szoktasd r\'e1 magad, mert sok felesleges munk\'e1t\'f3l tud megszabad\'edtani, olvass ut\'e1na!\
+\
+CSS\
+	a css/style.css f\'e1jl 8. sor\'e1ban l\'e9trehozod a background \'e9rt\'e9ket, majd a k\'f6vetkez\uc0\u337 sorban fel\'fcl\'edrod, \'edgy a 8. sor soha nem fog v\'e9grehajt\'f3dni\
+	css/style.css f\'e1jl 17. sor\'e1ban az rgb utols\'f3 param\'e9tere (0.4) semmit nem csin\'e1l, gondolom az opacityt akartald vele \'e1ll\'edtani, de az csak az rgba()-val m\uc0\u369 k\'f6dik.\
+	sz\'ednek meghat\'e1roz\'e1s\'e1ra praktikusabb hexa k\'f3dot haszn\'e1lni, azt dolgozza fel leggyorsabban a processzor, string form\'e1ban (color: white) nem \'e9rdemes haszn\'e1lni\
+	a header men\'fct float left-right m\'f3dszerrel oldottad meg, itt az els\uc0\u337  left nem pontosan azt csin\'e1lja, amit szeretn\'e9l, mivel alap\'e9rtelmezetten is left az \'e9rt\'e9ke, \'edgy viszont \'93r\'e1k\'e9nyszer\'edted\'94, hogy kiker\'fclj\'f6n a folyamb\'f3l, emiatt ker\'fcl csak vertik\'e1lisan k\'f6z\'e9pre. Float-ot m\'e1r soha nem c\'e9lszer\u369  haszn\'e1lni, helyette ink\'e1bb a navbar-ra tegy\'e9l egy flex-et \'e9s azzal osztogasd kett\'e9 a folyamot!\
+	az <a> tagnek k\'f6telez\uc0\u337  \'e9rt\'e9ke a href, ha nem teszel bele, akkor nem szab\'e1lyos, ez\'e9rt nem v\'e1lt a kurzor automatikusan pointerre, ha tett\'e9l bele href-et, ut\'e1na t\'f6r\'f6lheted r\'f3luk a cursor: pointert\
+	style.css 16. sor, overflow: hidden, ezzel k\'e9nyszer\'edtetten elt\'fcntetsz dolgokat, amiknek meg k\'e9ne jelenni, SEO szempontb\'f3l sem szerencs\'e9s, valamint k\'e9s\uc0\u337 bb nagy galib\'e1kat tud okozni, soha ne haszn\'e1ld!\
+	\
+JS\
+	JS-ben nem kell doll\'e1rjellel kezdeni a v\'e1ltoz\'f3k nev\'e9t\
+	const v\'e1ltoz\'f3kat \'e9rdemes csupa nagybet\uc0\u369 vel \'edrni, \'edgy k\'e9s\u337 bb is tudni fogod, hogy azt nem tudod v\'e1ltoztatni\
+	22. sort\'f3l lefel\'e9 css param\'e9tereket m\'f3dos\'edtgatsz, erre egyszer\uc0\u369 bb \'e9s praktikusabb, csak ezeknek a param\'e9tereknek csin\'e1lsz egy k\'fcl\'f6n css classt \'e9s azt teszed r\'e1 a JS-ben}

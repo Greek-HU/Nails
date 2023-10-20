@@ -5,9 +5,8 @@ const $ce = el => document.createElement(el);
 var navbar = document.querySelector('.navbar');
 const box = $s('.box');
 
-navbar.lastElementChild.style.float = 'right';
 
-var picTPL = p => `
+var picTPL = p => ` 
 
 <a href="${p.place}" target="_blank" class="gallery__link">
 <figure class="gallery__thumb">
@@ -76,43 +75,47 @@ $sAll('.services_box').forEach(bn => {
     }
     bn.querySelector('.Lobster').onclick = function () {
         $s('.services_box p').style.fontFamily = 'Lobster,cursive';
-    }
+    };
 });
-function get_picBox() {
-    const pic = document.createElement('img');
-    pic.width = '100px'
-    $s('.pic_box').appendChild(pic);
-};
+function clearCache() {
+  // A böngésző gyorsítótárának törlése
+  window.location.reload(true);
+  
+  console.log(jsonData)
+}
 
+// A kód futtatása az oldal betöltésekor
+//window.addEventListener("load", clearCache);
 window.addEventListener('DOMContentLoaded', function () {
     fetch('../galleryPic.json')
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
+        .then(function (jsonData) {
             var galeriaDiv = $s('.gallery');
 
-            data.forEach(function (pic) {
+            jsonData.forEach(function (pic) {
                 var picHTML = picTPL(pic);
                 var picContainer = document.createElement('div');
                 picContainer.classList.add('gallery__column');
-                picContainer.innerHTML = picHTML;
+                picContainer.innerHTML = picHTML; 
 
                 galeriaDiv.appendChild(picContainer);
             });
-            console.log(data);
-
+            console.log(jsonData);
         })
         .catch(function (error) {
             console.log('Hiba a képek betöltése során:', error);
         });
-})
+});
 function mobil_navbar(){
     var nav_a = $s(".nav_links");
     if(nav_a.style.display === "block"){
         nav_a.style.display = "none";
     }else{
-        nav_a.style.display = "block"
+        nav_a.style.display = "block";
     }
-    
 }
+$s(".reFresh").onclick = function(){
+    clearCache();
+};
