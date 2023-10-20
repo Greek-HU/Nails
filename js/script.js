@@ -66,7 +66,7 @@ $sAll('.services_box').forEach(bn => {
 });
 function get_picBox() {
     const pic = document.createElement('img');
-    pic.width = '100px'
+    pic.width = '100px';
     $s('.pic_box').appendChild(pic);
 };
 

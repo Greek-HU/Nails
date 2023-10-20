@@ -77,15 +77,7 @@ $sAll('.services_box').forEach(bn => {
         $s('.services_box p').style.fontFamily = 'Lobster,cursive';
     };
 });
-function clearCache() {
-  // A böngésző gyorsítótárának törlése
-  window.location.reload(true);
-  
-  console.log(jsonData)
-}
 
-// A kód futtatása az oldal betöltésekor
-//window.addEventListener("load", clearCache);
 window.addEventListener('DOMContentLoaded', function () {
     fetch('../galleryPic.json')
         .then(function (response) {
@@ -116,6 +108,3 @@ function mobil_navbar(){
         nav_a.style.display = "block";
     }
 }
-$s(".reFresh").onclick = function(){
-    clearCache();
-};
