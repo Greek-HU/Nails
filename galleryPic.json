@@ -1,26 +1,27 @@
 [
     {
-        "place": "img\/2023060201.jpg",
+        "id": 0,
+        "place": "..\/img\/2023060201.jpg",
         "title": "Alc\u00edm"
     },
     {
-        "place": "img\/2023060202.jpg",
+        "id": 1,
+        "place": "..\/img\/2023060202.jpg",
         "title": "Alc\u00edm2"
     },
     {
-        "place": "img\/2023060203.jpg",
+        "id": 2,
+        "place": "..\/img\/2023060203.jpg",
         "title": "Alc\u00edm"
     },
     {
-        "place": ".\/img\/2023060204.jpg",
+        "id": 3,
+        "place": "..\/img\/2023060204.jpg",
         "title": "Alc\u00edm2"
     },
     {
-        "place": ".\/img\/2023060205.jpg",
+        "id": 4,
+        "place": "..\/img\/2023060205.jpg",
         "title": "Alc\u00edm"
-    },
-    {
-        "place": "..\/img\/Halak.jpg",
-        "title": "Halak"
-    }
+    }    
 ]

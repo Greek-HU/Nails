@@ -1,5 +1,4 @@
 .gallery {
-	display: flex;
 	padding: 2px;
 	
 }
@@ -9,10 +8,9 @@
 }
 
 .gallery__column {
-	display: flex;
+	display: inline-block;
 	flex-direction: column;
 	flex: 0 0 auto;
-    width: 50%;
 }
 
 .gallery__link {

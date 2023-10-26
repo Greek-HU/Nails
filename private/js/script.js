@@ -5,7 +5,6 @@ const $ce = el => document.createElement(el);
 var navbar = document.querySelector('.navbar');
 const box = $s('.box');
 
-
 var picTPL = p => ` 
 
 <a href="${p.place}" target="_blank" class="gallery__link">
@@ -78,7 +77,7 @@ $sAll('.services_box').forEach(bn => {
     };
 });
 
-window.addEventListener('DOMContentLoaded', function () {
+/*window.addEventListener('DOMContentLoaded', function () {
     fetch('../galleryPic.json')
         .then(function (response) {
             return response.json();
@@ -99,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
         .catch(function (error) {
             console.log('Hiba a képek betöltése során:', error);
         });
-});
+});*/
 function mobil_navbar(){
     var nav_a = $s(".nav_links");
     if(nav_a.style.display === "block"){

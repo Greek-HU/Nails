@@ -9,8 +9,11 @@ var picTPL = p => `
 
 <a href="${p.place}" target="_blank" class="gallery__link">
 <figure class="gallery__thumb">
-    <img src="${p.place}" alt="Portrait by Jessica Felicio"
+    <img id='${p.id}' src="${p.place}" alt="Portrait by Jessica Felicio"
         class="gallery__image">
+        <div class="text-center">
+            <button class="btn btn-danger mt-3 del_btn">Törlés</button>
+        </div>
     <figcaption class="gallery__caption">${p.title}</figcaption>
 </figure>
 </a>
@@ -30,18 +33,7 @@ $sAll('.navbar').forEach(nBTN => {
         $s('.cont').style.display = 'none';
         
     }
-    nBTN.querySelector('.gall_on').onclick = function () {
-        $s('.wlc_txt').style.display = 'none';
-        $s('.services_box').style.display = 'none';
 
-        $s('.gallery').style.display = 'flex';
-        $s('.gallery').classList.add('gal_show');
-
-        setTimeout(function () {
-            $s('.gallery').style.opacity = "1";
-        }, 10);
-        $s('.cont').style.display = 'none';
-    }
     nBTN.querySelector('.contact').onclick = function () {
         $s('.wlc_txt').style.display = 'none';
         $s('.services_box').style.display = 'none';
@@ -64,12 +56,51 @@ $sAll('.services_box').forEach(bn => {
         $s('.services_box p').style.fontFamily = 'Lobster,cursive';
     }
 });
-function get_picBox() {
-    const pic = document.createElement('img');
-    pic.width = '100px';
-    $s('.pic_box').appendChild(pic);
-};
+function load_pic(){
+    fetch('../galleryPic.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (jsonData) {
+            var galeriaDiv = $s('.gallery');
 
+            jsonData.forEach(function (pic) {
+                var picHTML = picTPL(pic);
+                var picContainer = document.createElement('div');
+                picContainer.classList.add('gallery__column');
+                picContainer.innerHTML = picHTML; 
+
+                galeriaDiv.appendChild(picContainer);
+            });
+            console.log(jsonData);
+        })
+        .catch(function () {
+            galeriaDiv.innerHTML = 'Hiba a képek betöltése során: Kérem próbálja meg később';
+        });
+}
+window.onload = load_pic();
+/*window.addEventListener('DOMContentLoaded', function () {
+    fetch('../galleryPic.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (jsonData) {
+            var galeriaDiv = $s('.gallery');
+
+            jsonData.forEach(function (pic) {
+                var picHTML = picTPL(pic);
+                var picContainer = document.createElement('div');
+                picContainer.classList.add('gallery__column');
+                picContainer.innerHTML = picHTML; 
+
+                galeriaDiv.appendChild(picContainer);
+            });
+            console.log(jsonData);
+        })
+        .catch(function () {
+            galeriaDiv.innerHTML = 'Hiba a képek betöltése során: Kérem próbálja meg később';
+        });
+});*/
 function mobil_navbar(){
     var nav_a = $s(".nav_links");
     if(nav_a.style.display === "block"){
@@ -79,4 +110,3 @@ function mobil_navbar(){
     }
     
 }
-window.onload = get_picBox()

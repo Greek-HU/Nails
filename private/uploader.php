@@ -4,14 +4,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Képfeltöltő űrlap</title>
-    <style>
-        .gal_show{
-            opacity: 1;
-        }
-        .gallery__thumb>img{
-            height: 200px;
-        }
-    </style>
+    
 </head>
 <body>
 <div class="navbar">
@@ -28,16 +21,28 @@
     </div>
     <div class="box">
         <div class="text box_color">
-    <h1>Képfeltöltő űrlap</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" id="kep" name="kep" accept="image/*">
-    <label for="cim">Cím:</label>
-    <input type="text" id="cim" name="cim">
-    <button type="submit" >Feltölt</button>
-    </form>
+            <div class="text-center form_box">
+                <h1>Képfeltöltő űrlap</h1>
+                 
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                        <input type="file" id="kep" name="kep" accept="image/*">
+                    </div>
+                    <div >
+                        <label for="cim">Cím:</label>
+                        <input type="text" id="cim" name="cim">
+                    </div>
+                    <div class="fomr_btn">
+                        <button class="btn btn-dark" type="submit" >Feltölt</button>
+                    </div>
+                </form>
+            </div>
+    
     <?php
+        
+    
             if(isset($_FILES['kep']) && $_FILES['kep']['error'] === 0){
-                if(substr($_FILES['kep']['name'], -4)  == '.jpg' || substr($_FILES['kep']['name'], -4)  == 'jpeg'){
+                if(substr($_FILES['kep']['name'], -4)  == '.jpg' || substr($_FILES['kep']['name'], -4)  == 'jpeg' || substr($_FILES['kep']['name'], -4)  == '.png'){
                     $sourceImage = imagecreatefromjpeg($_FILES['kep']['tmp_name']);
                     if($sourceImage){
                         $originalWidth  = imagesx($sourceImage);
@@ -48,15 +53,13 @@
                         imagecopyresampled($destImage, $sourceImage, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $originalWidth, $originalHeight);
                         
                         $fileName = $_POST['cim'] . '.jpg';
-                        $filePath = './img/'.$fileName;
-                        imagejpeg($destImage, './img/thumb/'.$fileName);
-                        imagedestroy($sourceImage);
-                        imagedestroy($destImage);
+                        $filePath = '../img/'.$fileName;
                         copy($_FILES['kep']['tmp_name'], '../img/'.$fileName);
                         
                         $newImageObj = array(
-                "place" => $str_replace("./img", "/", $fileName),
-                "title" => $_POST['cim']
+                            "id" => date('YmdHis'),
+                            "place" => "../img/" .$fileName,
+                            "title" => $_POST['cim']
             );
             
             // Módosítás: Korábbi adatok betöltése a JSON fájlból
@@ -71,20 +74,39 @@
             
             // Módosítás: Az adatok mentése a JSON fájlba
             file_put_contents($galleryFile, json_encode($galleryData, JSON_PRETTY_PRINT));
-                    }else{
+            }else{
                         //hiba üzenet, mert a jpg-et nem sikerült betöltenie
                         print('hiba, szóljón a rendszergazdának!');
                     }
+                    }
                 }
-            }
+            
         ?>
-    <div class="container">
-                <div class="row">
-                    <div class="gallery col-12 round gal_show"></div>
-                </div>
+    <div class="text-center">
+        <?php
+        require_once './helper.php';
+        require_once './datahelper.php';
+        ?>
+        <?php
+        $cart = ['ID', 'TITLE', 'PIC'];
+
+        $tableData = [];
+
+        if (isset($_GET['p'])) {
+            $page = (int) $_GET['p'];
+            $tableData = pageData($page);
+            genPicCart($tableData, $cart, $page, 'pic_id');
+            print(pager($page, 200));
+        } else {
+            $tableData = pageData(1);
+            genPicCart($tableData, $cart, $page, 'pic_id');
+            print(pager(1, 200));
+        }
+        
+        ?>
                 
+    </div>
             </div>
-        </div>
     </div>
         <script src="./js/script.js"></script>
 
