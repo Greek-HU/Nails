@@ -11,9 +11,6 @@ var picTPL = p => `
 <figure class="gallery__thumb">
     <img id='${p.id}' src="${p.place}" alt="Portrait by Jessica Felicio"
         class="gallery__image">
-        <div class="text-center">
-            <button class="btn btn-danger mt-3 del_btn">Törlés</button>
-        </div>
     <figcaption class="gallery__caption">${p.title}</figcaption>
 </figure>
 </a>
@@ -32,13 +29,6 @@ $sAll('.navbar').forEach(nBTN => {
         $s('.gallery').style.display = 'none';
         $s('.cont').style.display = 'none';
         
-    }
-
-    nBTN.querySelector('.contact').onclick = function () {
-        $s('.wlc_txt').style.display = 'none';
-        $s('.services_box').style.display = 'none';
-        $s('.gallery').style.display = 'none';
-        $s('.cont').style.display = 'block';
     }
 });
 

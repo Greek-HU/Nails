@@ -1,23 +1,52 @@
-<?php
-// Kapcsolódás az adatbázishoz
-$conn = mysqli_connect("localhost", "root", "", "my_database");
+<?php include './_header.php'; ?>
+    <?php
+        require('./helper.php');
+        if(isset($_GET['id'])){
+            $id=$_GET['id'];
+            $e=DH::delete($id);
+           
+        }
+        if (isset($_POST['upload_button'])) {
+            $title=$_POST['title'];
+            $fileName = $_POST['title'].'.jpg';
+            $pic_url = "../img/".$_POST['title'].'.jpg';
+           if (!empty($_POST['title'])&& !empty($_FILES['picture'])) {
+                $p=DH::conect()->prepare('INSERT INTO pictures (title,picture_url) VALUES(:t,:p)');
+                $p->bindValue(':t', $title);
+                $p->bindValue(':p', $pic_url);
+                move_uploaded_file($_FILES["picture"]["tmp_name"], $pic_url);
+                $p->execute();
+                
+            
+            }else{
+                echo 'A kép nem töldődött fel!';
+            }
+           
+        }
+    ?>
+    <div class="box">
+        <div class="text box_color">
+            <div class="text-center form_box">
+                <h1>Képfeltöltő űrlap</h1>
+                 
+                <form method="post" enctype="multipart/form-data">
+                    <div>
+                        <input type="file" name="picture" accept="image/*">
+                    </div>
+                    <div >
+                        <label for="cim">Cím:</label>
+                        <input type="text" name="title">
+                    </div>
+                    <div class="fomr_btn">
+                        <input class="btn btn-dark" type="submit" value="Feltöltés" name="upload_button">
+                    </div>
+                </form>
+            </div>
+            </div>
+            </div>
+    </div>
+    <?php include './_up_gallery.php'; ?>
+        <script src="./js/script.js"></script>
 
-// Ellenőrizzük, hogy a feltöltés sikeres volt-e
-if ($_FILES["kep"]["error"] != UPLOAD_ERR_OK) {
-  die("A feltöltés nem sikerült!");
-}
-
-// Másoljuk át a feltöltött képet egy biztonságos helyre
-$kep_url = "images/" . $_FILES["kep"]["name"];
-move_uploaded_file($_FILES["kep"]["tmp_name"], $kep_url);
-
-// Tároljuk a feltöltött kép adatait az adatbázisban
-$sql = "INSERT INTO kep (kep_url) VALUES ('$kep_url')";
-mysqli_query($conn, $sql);
-
-// Jelezzük a felhasználónak, hogy a feltöltés sikeres volt
-echo "A feltöltés sikeres volt!";
-
-// Zárjuk be az adatbázis kapcsolatot
-mysqli_close($conn);
-?>
+</body>
+</html>

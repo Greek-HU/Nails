@@ -58,9 +58,6 @@ body{
 .box .services_box{
     display: none;
 }
-.box .gallery{
-    display: none;
-}
 .box .cont{
     display: none;
     margin: 20px;
@@ -75,7 +72,15 @@ body{
     width: 47%;
     margin: auto;
 }
-
+.form_box{
+    background-color: rgb(237 204 209);
+    width: 35%;
+    border-radius: 10px;
+    margin: auto;    
+}
+form>div{
+    padding: 15px;
+}
 
 .box .cont li{
     margin: 5px;

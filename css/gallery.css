@@ -1,8 +1,10 @@
+.text{
+	height: 10rem;
+}
 .gallery {
 	padding: 2px;
 	
 }
-
 .gallery__image {
 	filter: grayscale(1);
 }

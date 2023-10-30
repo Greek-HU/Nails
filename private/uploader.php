@@ -39,7 +39,6 @@
             </div>
     
     <?php
-        
     
             if(isset($_FILES['kep']) && $_FILES['kep']['error'] === 0){
                 if(substr($_FILES['kep']['name'], -4)  == '.jpg' || substr($_FILES['kep']['name'], -4)  == 'jpeg' || substr($_FILES['kep']['name'], -4)  == '.png'){
@@ -82,30 +81,28 @@
                 }
             
         ?>
-    <div class="text-center">
-        <?php
-        require_once './helper.php';
-        require_once './datahelper.php';
-        ?>
-        <?php
-        $cart = ['ID', 'TITLE', 'PIC'];
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="gallery col-12 col-md-8 gal_show"></div>
+        </div>
+    </div>
+    <?php
         $tableData = [];
 
         if (isset($_GET['p'])) {
             $page = (int) $_GET['p'];
             $tableData = pageData($page);
-            genPicCart($tableData, $cart, $page, 'pic_id');
+            genTable($tableData, $page, 'id');
             print(pager($page, 200));
         } else {
             $tableData = pageData(1);
-            genPicCart($tableData, $cart, $page, 'pic_id');
+            genTable($tableData, $page, 'id');
             print(pager(1, 200));
         }
         
         ?>
                 
-    </div>
+                
             </div>
     </div>
         <script src="./js/script.js"></script>
