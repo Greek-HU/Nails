@@ -11,13 +11,18 @@
             $fileName = $_POST['title'].'.jpg';
             $pic_url = "../img/".$_POST['title'].'.jpg';
            if (!empty($_POST['title'])&& !empty($_FILES['picture'])) {
+            if(substr($_FILES['picture']['name'], -4)  == '.jpg' || substr($_FILES['picture']['name'], -4)  == 'jpeg' || substr($_FILES['picture']['name'], -4)  == '.png'){
                 $p=DH::conect()->prepare('INSERT INTO pictures (title,picture_url) VALUES(:t,:p)');
                 $p->bindValue(':t', $title);
                 $p->bindValue(':p', $pic_url);
                 move_uploaded_file($_FILES["picture"]["tmp_name"], $pic_url);
                 $p->execute();
                 
-            
+            }else{
+                echo('<div class=" d-block p-3 text-center bg-danger text-light">
+                    <p>Hiba történt, a kép nem töltődött fel!</p>
+                </div>');
+            }
             }else{
                 echo 'A kép nem töldődött fel!';
             }

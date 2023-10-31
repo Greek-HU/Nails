@@ -14,10 +14,10 @@
     </div>
         <div class="nav_links">
             <a href="../index.html"class="fst_pg">Kezdőlap</a>
-            <a href="../index.html"class="services">Szolgáltatások</a>
+            <a href="../pages/service.html"class="services">Szolgáltatások</a>
             <a href="../pages/gallery.html"class="gall_on">Galéria</a>
             <a href="upload.php" class="upload">Képfeltöltés</a>
-            <div class="d-flex align-items-end justify-content-end">
+            <div class="d-flex justify-content-end">
                 <a href="../pages/cont.html" class="contact">Elérhetőség</a>
             </div>
         </div>

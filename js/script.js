@@ -16,36 +16,43 @@ var picTPL = p => `
 </a>
 
 `;
-$sAll('.navbar').forEach(nBTN => {
-    nBTN.querySelector('.fst_pg').onclick = function () {
-        $s('.wlc_txt').style.display = 'grid';
-        $s('.services_box').style.display = 'none';
-        $s('.gallery').style.display = 'none';
-        $s('.cont').style.display = 'none';
-    }
-    nBTN.querySelector('.services').onclick = function () {
-        $s('.wlc_txt').style.display = 'none';
-        $s('.services_box').style.display = 'block';
-        $s('.gallery').style.display = 'none';
-        $s('.cont').style.display = 'none';
-        
-    }
-});
-
+var pictpl = p => `<img src="${p}" class="big_img" alt="">`;
 $sAll('.services_box').forEach(bn => {
     bn.querySelector('.Permanent').onclick = function () {
-        $s('.services_box p').style.fontFamily = 'permanent,cursive';
+        $s('.services_box').style.fontFamily = 'permanent,cursive';
     }
     bn.querySelector('.Poppins').onclick = function () {
-        $s('.services_box p').style.fontFamily = 'Poppins,sans-serif';
+        $s('.services_box').style.fontFamily = 'Poppins,sans-serif';
     }
     bn.querySelector('.Playfair').onclick = function () {
-        $s('.services_box p').style.fontFamily = 'Playfair Display,serif';
+        $s('.services_box').style.fontFamily = 'Playfair Display,serif';
     }
     bn.querySelector('.Lobster').onclick = function () {
-        $s('.services_box p').style.fontFamily = 'Lobster,cursive';
+        $s('.services_box').style.fontFamily = 'Lobster,cursive';
     }
 });
+function img_box(image){
+    var op_img = $s('.op_img');
+    var img = new Image();
+    img.src = image.src;
+    img.onload = function() {
+    var pic_html = pictpl(img.src);
+    op_img.innerHTML = pic_html;
+    op_img.style.display = "flex";
+    
+
+    // X gomb megjelenítése
+    var closeButton = document.createElement("button");
+    closeButton.innerHTML = "X";
+    closeButton.onclick = function() {
+      op_img.style.display = "none";
+    };
+    closeButton.style.position = "absolute";
+    closeButton.style.zIndex = 101;
+    op_img.appendChild(closeButton);
+};
+img.style.display = "none";
+}
 function load_pic(){
     fetch('../galleryPic.json')
         .then(function (response) {
@@ -68,29 +75,7 @@ function load_pic(){
             galeriaDiv.innerHTML = 'Hiba a képek betöltése során: Kérem próbálja meg később';
         });
 }
-window.onload = load_pic();
-/*window.addEventListener('DOMContentLoaded', function () {
-    fetch('../galleryPic.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (jsonData) {
-            var galeriaDiv = $s('.gallery');
 
-            jsonData.forEach(function (pic) {
-                var picHTML = picTPL(pic);
-                var picContainer = document.createElement('div');
-                picContainer.classList.add('gallery__column');
-                picContainer.innerHTML = picHTML; 
-
-                galeriaDiv.appendChild(picContainer);
-            });
-            console.log(jsonData);
-        })
-        .catch(function () {
-            galeriaDiv.innerHTML = 'Hiba a képek betöltése során: Kérem próbálja meg később';
-        });
-});*/
 function mobil_navbar(){
     var nav_a = $s(".nav_links");
     if(nav_a.style.display === "block"){

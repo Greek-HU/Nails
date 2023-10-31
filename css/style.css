@@ -55,12 +55,16 @@ body{
 .text_box{
     margin: 2% 7% 5% 0;
 }
-.box .services_box{
-    display: none;
+.services_box table th:first-child,
+.services_box tbody td:last-child{
+    background: white;
+    font-weight: 600;
 }
-.box .cont{
-    display: none;
-    margin: 20px;
+.services_box table tr{
+    font-weight: 400;
+}
+.services_box tr:first-child{
+    margin: 10px;
 }
 .box .cont li{
     list-style: none;

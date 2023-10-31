@@ -2,7 +2,7 @@
     $p=DH::Selectdata();
             
                    echo'
-                        <div class="container-fluid">
+                        <div class="container-fluid mt-5">
                             <div class="row">
                                 <div class="gallery col-12 col-md-8 gal_show">';                
                                     for ($i=0; $i < count($p); $i++) { 
