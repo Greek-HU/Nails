@@ -2,8 +2,10 @@
 	height: 10rem;
 }
 .gallery {
+	display: contents;
+    opacity: 0;
+  	animation: fade-in 1.1s ease-in;
 	padding: 2px;
-	
 }
 .gallery__image {
 	filter: grayscale(1);
@@ -33,13 +35,13 @@
 	position: relative;
 }
 .op_img{
-	
+	display: none;
 	position: fixed;
 	z-index: 100;
 	height: 100%;
 	width: 100%;
 	justify-content: center;
-	background-color: white;
+	background-color: rgba(261,236,239, 0.9);
 }
 
 .gallery__image {

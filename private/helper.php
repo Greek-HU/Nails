@@ -20,11 +20,13 @@ class DH{
        $data=$p->fetchAll(PDO::FETCH_ASSOC);
        return $data;
     }
-    public static function delete($id)
+    public static function delete($title)
     {
-        $p=DH::conect()->prepare('DELETE FROM pictures WHERE id=:id');
-        $p->bindValue(':id',$id);
+        $p=DH::conect()->prepare('DELETE FROM pictures WHERE title=:title');
+        $p->bindValue(':title',$title);
         $p->execute();
+        $img_path = '../img/' .$title. '.jpg';
+        unlink($img_path);
     }
     public static function userDataPerId($id)
         {

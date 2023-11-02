@@ -39,19 +39,13 @@ function img_box(image){
     var pic_html = pictpl(img.src);
     op_img.innerHTML = pic_html;
     op_img.style.display = "flex";
-    
 
-    // X gomb megjelenítése
-    var closeButton = document.createElement("button");
-    closeButton.innerHTML = "X";
-    closeButton.onclick = function() {
+    op_img.onclick = function() {
       op_img.style.display = "none";
     };
-    closeButton.style.position = "absolute";
-    closeButton.style.zIndex = 101;
+    
     op_img.appendChild(closeButton);
 };
-img.style.display = "none";
 }
 function load_pic(){
     fetch('../galleryPic.json')

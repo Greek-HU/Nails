@@ -1,10 +1,9 @@
 <?php include './_header.php'; ?>
     <?php
         require('./helper.php');
-        if(isset($_GET['id'])){
-            $id=$_GET['id'];
-            $e=DH::delete($id);
-           
+        if(isset($_GET['title'])){
+            $title = $_GET['title'];
+            $e=DH::delete($title);           
         }
         if (isset($_POST['upload_button'])) {
             $title=$_POST['title'];
@@ -29,7 +28,7 @@
            
         }
     ?>
-    <div class="box">
+    <div class="box pb-4">
         <div class="text box_color">
             <div class="text-center form_box">
                 <h1>Képfeltöltő űrlap</h1>
