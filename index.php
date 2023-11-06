@@ -23,11 +23,11 @@
         <div class="nav_links">
 
             <a href="#" class="fst_pg">Kezdőlap</a>
-            <a href="./pages/service.html" class="services">Szolgáltatások</a>
+            <a href="./pages/service.php" class="services">Szolgáltatások</a>
             <a href="./pages/gallery.php" class="gall_on">Galéria</a>
             <a href="./private/upload.php">Képfeltöltés</a>
             <div class="d-flex justify-content-end">
-                <a href="./pages/cont.html" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
+                <a href="./pages/cont.php" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
             </div>
         </div>
         <a href="javascript:void(0);" class="icon text-center" onclick="mobil_navbar()">
@@ -35,7 +35,7 @@
           </a>
     </div>
     <div class="box container-fluid">
-        <div class="text box_color">
+        <div class="text">
             <div class="wlc_txt">
                 <h1>Üdvözöllek az oldalamon</h1>
                 <div class="d-flex">

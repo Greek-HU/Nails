@@ -19,12 +19,12 @@
 
         <div class="nav_links">
 
-            <a href="../index.html" class="fst_pg">Kezdőlap</a>
+            <a href="../index.php" class="fst_pg">Kezdőlap</a>
             <a href="#" class="services">Szolgáltatások</a>
             <a href="../pages/gallery.php" class="gall_on">Galéria</a>
             <a href="../private/upload.php">Képfeltöltés</a>
             <div class="d-flex align-items-end justify-content-end">
-                <a href="./cont.html" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
+                <a href="./cont.php" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
             </div>
         </div>
         <a href="javascript:void(0);" class="icon text-center" onclick="mobil_navbar()">
@@ -43,8 +43,8 @@
                         <button class="Lobster">Lobster</button>
                 </div>
                 <div class="d-table m-auto mt-5">
-                <div class="d-flex text-center p-3">
-                    <table class="mx-5">
+                <div class="d-flex text-center p-3 table-box">
+                    <table class="table_1">
                         <thead>
                             <tr>
                                 <th class="bg-danger-subtle p-4">Francia köröm</th>
@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody class="shadow p-4 mb-5 mx-5 bg-body-primery rounded-bottom">
-                            <tr class="m-5">
+                            <tr >
                                 <th></th>
                                 <td>S</td>
                                 <td class="p-2">7500 Ft.</td>
@@ -75,7 +75,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="mx-5">
+                    <table class="table_2">
                         <thead>
                             <tr>
                                 <th class="bg-danger-subtle p-4">Saját köröm</th>
@@ -106,7 +106,7 @@
                         </tbody>
                     </table>
                     
-                    <table class="mx-5">
+                    <table class="table_3">
                         <thead class="">
                             <tr> 
                                 <th class="bg-danger-subtle p-3 col-5">Műköröm építés/töltés - Acryl gél- Gél lakk</th>

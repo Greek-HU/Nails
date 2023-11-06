@@ -17,46 +17,46 @@
         <img src="../img/logo.jpg" class="logo justify-content-start" alt="Körmös logó">
     </div>
         <div class="nav_links">
-            <a href="../index.html"class="fst_pg">Kezdőlap</a>
-            <a href="../pages/service.html"class="services">Szolgáltatások</a>
+            <a href="../index.php"class="fst_pg">Kezdőlap</a>
+            <a href="../pages/service.php"class="services">Szolgáltatások</a>
             <a href="../pages/gallery.php"class="gall_on">Galéria</a>
             <a href="../private/upload.php" class="upload">Képfeltöltés</a>
             <div class="d-flex justify-content-end">
-                <a href="../pages/cont.html" class="contact">Elérhetőség</a>
+                <a href="../pages/cont.php" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
             </div>
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="mobil_navbar()">
+        <a href="javascript:void(0);" class="icon text-center" onclick="mobil_navbar()">
             <i class="fa fa-bars"></i>
           </a>
     </div>
-    <?php 
-require ('../private/helper.php');
-    $p=DH::Selectdata();
-                   echo'
-                   <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
                    <div class="op_img">
                    </div>
                    </div>
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="gallery col-12 col-md-8">';                
-                                    for ($i=0; $i < count($p); $i++) { 
-                                    echo ('<div class="gallery__column">
-                                        <div  class="gallery__link">
-                                            <figure class="gallery__thumb">
-                                                <img src="'.$p[$i]['picture_url'].'" onclick="img_box(this)" alt="Portrait by Jessica Felicio"
-                                                    class="gallery__image">
-                                                    <figcaption class="gallery__caption">'.$p[$i]['title'].'</figcaption>
-                                            </figure>
-                                        </div> 
-                                    </div>
-                                    ');
-                                }
-                                echo('</div>
-                            </div>
-                        </div>');
+                                <div class="gallery col-12 col-md-8">
+    <?php 
+require ('../private/DataHelper.php');
+    $p=DataHelper::Selectdata();
+                                
+    for ($i=0; $i < count($p); $i++) { 
+        echo ('<div class="gallery__column">
+            <div  class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="'.$p[$i]['picture_url'].'" onclick="img_box(this)" alt="Portrait by Jessica Felicio"
+                        class="gallery__image">
+                        <figcaption class="gallery__caption">'.$p[$i]['title'].'</figcaption>
+                </figure>
+            </div> 
+        </div>
+        ');
+    }
+                                
 ?>
-
+</div>
+                            </div>
+                        </div>
 <script src="../js/script.js"></script>
 
 </body>

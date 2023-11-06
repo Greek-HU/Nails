@@ -1,25 +1,20 @@
 <?php include('_header.php'); ?>
 <?php
-    require('./helper.php');
+    require('./DataHelper.php');
     if (isset($_GET['id_up'])) {
         $id_up=$_GET['id_up'];
-        $data=DH::userDataPerId($id_up);
+        $data=DataHelper::userDataPerId($id_up);
     }
     if (isset($_POST['upgrade_btn'])) {
         $title=$_POST['title'];
-       if (!empty($_POST['title'])) {
-
-            $p=DH::conect()->prepare('UPDATE pictures SET title=:t where id=:id');
-            $p->bindValue(':id',$id_up);
-            $p->bindValue(':t', $title);
-            $p->execute();
-            header('Location: upload.php');
-        }
+        
+        if (!empty($_POST['title'])) {
+        $u=DataHelper::Update($id_up, $title);}
        }
 ?>
 <div class="text-center">
 <?php
-    $p=DH::Selectdata();  
+    $p=DataHelper::Selectdata();  
          
         echo ('<div class="gallery__column">
             

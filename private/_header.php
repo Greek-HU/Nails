@@ -17,12 +17,12 @@
         <img src="../img/logo.jpg" class="logo justify-content-start" alt="Körmös logó">
     </div>
         <div class="nav_links">
-            <a href="../index.html"class="fst_pg">Kezdőlap</a>
-            <a href="../pages/service.html"class="services">Szolgáltatások</a>
+            <a href="../index.php"class="fst_pg">Kezdőlap</a>
+            <a href="../pages/service.php"class="services">Szolgáltatások</a>
             <a href="../pages/gallery.php"class="gall_on">Galéria</a>
             <a href="upload.php" class="upload">Képfeltöltés</a>
             <div class="d-flex justify-content-end">
-                <a href="../pages/cont.html" class="contact">Elérhetőség</a>
+                <a href="../pages/cont.php" class="contact">Elérhetőség</a>
             </div>
         </div>
         <a href="javascript:void(0);" class="icon" onclick="mobil_navbar()">

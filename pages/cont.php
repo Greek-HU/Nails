@@ -19,9 +19,9 @@
     
             <div class="nav_links">
     
-                <a href="../index.html" class="fst_pg">Kezdőlap</a>
-                <a href="./pages/service.html" class="services">Szolgáltatások</a>
-                <a href="./gallery.html" class="gall_on">Galéria</a>
+                <a href="../index.php" class="fst_pg">Kezdőlap</a>
+                <a href="./service.php" class="services">Szolgáltatások</a>
+                <a href="./gallery.php" class="gall_on">Galéria</a>
                 <a href="../private/upload.php">Képfeltöltés</a>
                 <div class="d-flex justify-content-end">
                     <a href="#" class="contact d-flex align-items-end justify-content-end">Elérhetőség</a>
@@ -32,16 +32,18 @@
               </a>
         </div>
 <body>
-    <div class="cont">
+    <div class="cont pt-4">
         <div class="cont_box">
-            <h2>Elérhetőség</h2>
-            <ul>
-                <li><strong>Cím: </strong><span>7700 Mohács Eötvös u. 8.</span></li>
-                <li><strong>Email: </strong><span>Csilla email címe</span></li>
-                <li><strong>Tel.: </strong><span>06 20 1234 567</span></li>
+            <h2>Időpont foglalás</h2>
+            <ul >
+                <li class="p-2"><strong>Cím: </strong><span>7700 Mohács E u. 8.</span></li>
+                <li class="p-2"><strong>Email: </strong><span>Email cím</span></li>
+                <li class="p-2 pb-3"><strong>Tel.: </strong><span>06 20 1234 567</span></li>
             </ul>
         </div>
-    </div>   
+    </div> 
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>
 

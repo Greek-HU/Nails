@@ -66,15 +66,20 @@ body{
 .services_box tr:first-child{
     margin: 10px;
 }
-.box .cont li{
-    list-style: none;
-    margin: 5px;
+.d-table table{
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 .cont_box{ 
-    background-color: rgb(231 161 207);
+    background-color: rgb(261,236,239);
     box-shadow: 0px 9px 10px 10px #e7a1cf;
-    width: 47%;
+    width: 33%;
+    border-radius: 5px;
     margin: auto;
+}
+
+.cont_box>ul>li{
+    list-style: none;
 }
 .form_box{
     background-color: rgb(237 204 209);
@@ -154,7 +159,23 @@ form>div{
     .text_box {
         margin: 2% 0% 0% 0%;
     }
-}
+    .form_box{
+        width: 90%;
+    }
+    .d-table table{
+        display: block;
+        padding: 20px;
+        margin-right: 0;
+    }
+    .table_1{
+        margin-left: 19% !important;
+    }
+    .table_2{
+        margin-left: 13% !important;
+    }
+    .table_3{
+        margin-left: 0 !important;
+    }
 @media (max-width: 700px){
     .logo{
         display: none;
@@ -178,6 +199,12 @@ form>div{
     .icon{
         display: block;
     }
+    .row{
+        justify-content: center;
+    }
+    .cont_box{
+        width: 70%;
+    }
 }
 @media (max-width: 375px){
     .navbar{
@@ -199,9 +226,5 @@ form>div{
     .text_box{
         margin: 40px 0px;
     }
-    .gal_show{
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-    }
+    
 }

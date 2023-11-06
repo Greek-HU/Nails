@@ -1,31 +1,14 @@
 <?php include './_header.php'; ?>
     <?php
-        require('./helper.php');
+        require('./DataHelper.php');
         if(isset($_GET['title'])){
             $title = $_GET['title'];
-            $e=DH::delete($title);           
+            $e=DataHelper::Delete($title);           
         }
         if (isset($_POST['upload_button'])) {
-            $title=$_POST['title'];
-            $fileName = $_POST['title'].'.jpg';
-            $pic_url = "../img/".$_POST['title'].'.jpg';
-           if (!empty($_POST['title'])&& !empty($_FILES['picture'])) {
-            if(substr($_FILES['picture']['name'], -4)  == '.jpg' || substr($_FILES['picture']['name'], -4)  == 'jpeg' || substr($_FILES['picture']['name'], -4)  == '.png'){
-                $p=DH::conect()->prepare('INSERT INTO pictures (title,picture_url) VALUES(:t,:p)');
-                $p->bindValue(':t', $title);
-                $p->bindValue(':p', $pic_url);
-                move_uploaded_file($_FILES["picture"]["tmp_name"], $pic_url);
-                $p->execute();
-                
-            }else{
-                echo('<div class=" d-block p-3 text-center bg-danger text-light">
-                    <p>Hiba történt, a kép nem töltődött fel!</p>
-                </div>');
-            }
-            }else{
-                echo 'A kép nem töldődött fel!';
-            }
-           
+            $new_title=$_POST['title'];
+            $picture=$_FILES['picture']['name'];
+            $p=DataHelper::Upload($new_title, $picture);                     
         }
     ?>
     <div class="box pb-4">
@@ -50,7 +33,7 @@
             </div>
     </div>
     <?php include './_up_gallery.php'; ?>
-        <script src="./js/script.js"></script>
+        <script src="../js/script.js"></script>
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
-    $p=DH::Selectdata();
+
+    $p=DataHelper::Selectdata();
             
                    echo'
                         <div class="container mt-5">
